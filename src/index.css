@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+/* Custom variables */
+:root {
+  --navbar-height: 64px;
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+}
+
+/* Base styles */
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-gray-100;
+}
+
+/* Component styles */
+.navbar {
+  @apply fixed top-0 left-0 right-0 h-[var(--navbar-height)] bg-gray-900 text-white shadow-lg z-50 flex items-center px-4 sm:px-6;
+}
+
+.sidebar {
+  @apply fixed top-[var(--navbar-height)] left-0 h-[calc(100vh-var(--navbar-height))] bg-gray-800 text-white shadow-lg z-40 transition-all duration-300;
+}
+
+.sidebar-offset {
+  @apply pl-0 lg:pl-[var(--sidebar-width)];
+  transition: padding-left 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .sidebar {
+    @apply hidden;
+  }
+  .sidebar.active {
+    @apply block;
+  }
+  .sidebar-offset {
+    @apply pl-0;
+  }
+}
+
+/* Calendar styles */
+.custom-calendar {
+  @apply rounded-2xl border-none shadow-md p-4 bg-white max-w-full;
+}
+
+.custom-calendar .event-date {
+  @apply bg-blue-100 rounded-full font-semibold text-blue-800;
+}
+
+.custom-calendar .react-calendar__tile {
+  @apply relative h-16 flex items-center justify-center text-sm hover:bg-gray-100 transition-colors;
+}
+
+.custom-calendar .react-calendar__tile--active {
+  @apply bg-blue-600 text-white rounded-full;
+}
+
+.custom-calendar .react-calendar__navigation button {
+  @apply text-gray-800 font-semibold text-lg hover:bg-gray-100 rounded-lg p-2;
+}
+
+/* Tooltip styles */
+.custom-tooltip {
+  @apply bg-gray-800 text-white text-sm rounded-lg px-3 py-1 shadow-lg;
+}
+
+/* Input and button styles */
+input,
+select,
+button {
+  @apply transition-all duration-200;
+}
+
+button:focus,
+input:focus,
+select:focus {
+  @apply outline-none ring-2 ring-blue-500;
+}
+
+/* Section scroll margin */
+section {
+  @apply scroll-mt-[var(--navbar-height)];
+}
